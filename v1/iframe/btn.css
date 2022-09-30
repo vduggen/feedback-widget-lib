@@ -1,0 +1,52 @@
+body {
+    position: relative;
+}
+
+/* BUTTON */
+.btn {
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    cursor: pointer;
+    transition: ease-in-out .3s;
+}
+
+.btn .btn__text {
+    font: 500 1rem sans-serif;
+    line-height: 1;
+}
+
+.btn--primary {
+    background-color: #7200d3;
+    color: white;
+}
+
+.btn--primary:hover {
+    opacity: 0.5;
+}
+
+.btn--action {
+    padding: 0 1rem;
+    -moz-transform:rotate(-90deg);
+    -ms-transform:rotate(-90deg);
+    -o-transform:rotate(-90deg);
+    -webkit-transform:rotate(-90deg);
+    transform: rotate(-90deg);
+    transform-origin: bottom right;
+    position: fixed;
+    right: 0;
+    top: 30%;
+    height: 40px;
+    border-radius: 4px 4px 0 0;
+    z-index: 1;
+}
+
+.btn--action .btn__icon {
+    fill: white;
+    transform: rotate(-270deg);
+}
+
+.btn--action .btn__text {
+    margin-left: .5rem;
+}
