@@ -5,9 +5,9 @@ class FeedbackWidget {
     init(template) {
         this.template = template;
         this.addStyle();
-        // this.fetchButton();
-        // this.fetchTemplate();
-        this.fetchHtml();
+        this.fetchButton();
+        this.fetchModal();
+        this.fetchModalContent();
     }
 
     addStyle() {
@@ -20,23 +20,24 @@ class FeedbackWidget {
 
     fetchButton() {
         fetch(`${this.baseURL}/template/button.html`)
-        .then(response => response.text())
-        .then(data => this.injectHtmlWrapper(data))
+            .then(response => response.text())
+            .then(data => this.injectHtml(data))
     }
 
-    fetchTemplate() {
+    fetchModal() {
+        fetch(`${this.baseURL}/template/modal.html`)
+            .then(response => response.text())
+            .then(data => this.injectHtml(data))
+    }
+
+    fetchModalContent() {
         fetch(`${this.baseURL}/template/${this.template}.html`)
-        .then(response => response.text())
-        .then(data => this.injectHtmlWrapper(data))
+            .then(response => response.text())
+            .then(data => this.injectHtml(data, '[data-activator-feedback] .modal__main'))
     }
 
-    fetchHtml() {
-        fetch(`http://127.0.0.1:5555/v2/api.js`)
-            .then(response => console.log(response))
-    }
-
-    injectHtmlWrapper(html) {
-        const element = document.querySelector('[data-activator-feedback]');
+    injectHtml(html, seletor = '[data-activator-feedback]') {
+        const element = document.querySelector(seletor);
         element.innerHTML += html;
     }
 }
